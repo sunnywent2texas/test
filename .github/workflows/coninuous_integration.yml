@@ -14,27 +14,14 @@ jobs:
         with:
           python-version: 3.7
       
-      - name: Run iSort Check
+      - name: Run Checks
         run: |
           pip install isort
           isort --check .
-      - name: Commit iSort changes to the pull request, if needed
-        if: failure()
-        run: |
-          git config --global user.name 'autoblack'
-          git config --global user.email 'autoblack@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git fetch
-          git checkout $GITHUB_HEAD_REF
-          isort .
-          git commit -am "FIX: Auto-Format Python code with iSort"
-          git push
-          
-      - name: Run Black Check
-        run: |
           pip install black
           black --check .
-      - name: Commit Black changes to the pull request, if needed
+          
+      - name: Commit Changes to the pull request, if needed
         if: failure()
         run: |
           git config --global user.name 'autoblack'
@@ -43,7 +30,8 @@ jobs:
           git fetch
           git checkout $GITHUB_HEAD_REF
           black .
-          git commit -am "FIX: Auto-Format Python code with Black"
+          isort .
+          git commit -am "FIX: Auto-Format Python code with Black/iSort"
           git push
       
       
