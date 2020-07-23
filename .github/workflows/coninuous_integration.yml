@@ -16,8 +16,10 @@ jobs:
       
       - name: Run Checks (Black, iSort)
         run: |
+          echo '------iSort------------'
           pip install isort
           isort --check .
+          echo '------Black------------'
           pip install black
           black --check .
           
