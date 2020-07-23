@@ -22,10 +22,8 @@ from third_party import (
     lib15,
 )
 
-
-
-
 test = 3534
 
-def test(   ):
+
+def test():
     print("hello")
