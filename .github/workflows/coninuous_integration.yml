@@ -16,12 +16,12 @@ jobs:
       
       - name: Run Checks (Black, iSort)
         run: |
-          echo '------iSort------------'
-          pip install isort
-          isort --check .
           echo '------Black------------'
           pip install black
           black --check .
+          echo '------iSort------------'
+          pip install isort
+          isort --check .
           
       - name: Commit Changes to the pull request, if needed
         if: failure()
@@ -31,8 +31,10 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git fetch
           git checkout $GITHUB_HEAD_REF
-          isort .
+          echo '------Black------------'
           black .
+          echo '------iSort------------'
+          isort .
           git commit -am "FIX: Auto-Format Python code with Black/iSort"
           git push
       
