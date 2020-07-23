@@ -34,6 +34,7 @@ jobs:
           echo '------Black------------'
           black .
           echo '------iSort------------'
+          pip install isort
           isort .
           git commit -am "FIX: Auto-Format Python code with Black/iSort"
           git push
