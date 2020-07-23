@@ -23,7 +23,12 @@ jobs:
           black .
           git config --global user.name 'autoblack'
           git config --global user.email 'sunnywent2texas@users.noreply.github.com'
+          run: echo 'hallo'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          run: echo 'REPO sonja' $GITHUB_REPOSITORY
           git checkout $GITHUB_HEAD_REF
+          run: echo 'HEAD REF sonja' $GITHUB_HEAD_REF
           git commit -am "fixup: Format Python code with Black"
+          run: echo 'commit'
           git push
+          run: echo 'push'
