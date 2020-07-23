@@ -1,4 +1,4 @@
-name: Continous Integration
+name: Code Check (Black)
 
 on: [pull_request]
 
@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
@@ -17,22 +17,18 @@ jobs:
         run: |
           pip install black
           black --check .
-      - name: If needed, commit black changes to the pull request
+      - name: Commit black changes to the pull request, if needed
         if: failure()
         run: |
-          echo 'hallo'
           black .
-          echo 'ran black'
           git config --global user.name 'autoblack'
           git config --global user.email 'sunnywent2texas@users.noreply.github.com'
-          echo 'hallo again'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          echo 'REPO sonja' $GITHUB_REPOSITORY
           git fetch
-          echo 'HEAD REF sonja' $GITHUB_HEAD_REF
           git checkout $GITHUB_HEAD_REF
-          echo 'try to commit next'
           git commit -am "fixup: Format Python code with Black"
-          echo 'commit'
           git push
-          echo 'push'
+        - name: Run iSort
+          run: |
+          pip install isort
+          isort .
