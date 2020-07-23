@@ -25,11 +25,11 @@ jobs:
         if: failure()
         run: |
           git config --global user.name 'autoblack'
-          git config --global user.email 'sunnywent2texas@users.noreply.github.com'
+          git config --global user.email 'autoblack@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git fetch
           git checkout $GITHUB_HEAD_REF
           isort .
           black .
-          git commit -am "fixup: Format Python code with Black"
+          git commit -am "FIX: Auto-Format Python code"
           git push
