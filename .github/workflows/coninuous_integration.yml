@@ -20,15 +20,17 @@ jobs:
       - name: If needed, commit black changes to the pull request
         if: failure()
         run: |
+          echo 'hallo'
           black .
+          echo 'ran black'
           git config --global user.name 'autoblack'
           git config --global user.email 'sunnywent2texas@users.noreply.github.com'
-          run: echo 'hallo'
+          echo 'hallo again'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          run: echo 'REPO sonja' $GITHUB_REPOSITORY
+          echo 'REPO sonja' $GITHUB_REPOSITORY
           git checkout $GITHUB_HEAD_REF
-          run: echo 'HEAD REF sonja' $GITHUB_HEAD_REF
+          echo 'HEAD REF sonja' $GITHUB_HEAD_REF
           git commit -am "fixup: Format Python code with Black"
-          run: echo 'commit'
+          echo 'commit'
           git push
-          run: echo 'push'
+          echo 'push'
