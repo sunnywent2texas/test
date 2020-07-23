@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: Python Black Check
-        uses: RojerGS/python-black-check@1.0.1
+        uses: jpetrucciani/black-check@master
