@@ -28,7 +28,7 @@ jobs:
           git checkout $GITHUB_HEAD_REF
           git commit -am "fixup: Format Python code with Black"
           git push
-        - name: Run iSort
-          run: |
+      - name: Run iSort
+        run: |
           pip install isort
           isort .
