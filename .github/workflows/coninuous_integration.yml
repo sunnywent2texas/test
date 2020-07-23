@@ -19,6 +19,11 @@ jobs:
           pip install black
           black --check .
           
+      - name: Run Checks
+        run: |
+          pip install isort
+          isort --check .
+          
       - name: Commit Changes to the pull request, if needed
         if: failure()
         run: |
@@ -30,9 +35,6 @@ jobs:
           pip install isort
           isort .
           black .
-          git commit -am "FIX: Auto-Format Python code with Black"
+          git commit -am "FIX: Auto-Format Python code"
           git push
-          
-          
-      
-      
+               
