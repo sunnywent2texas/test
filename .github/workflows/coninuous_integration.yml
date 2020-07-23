@@ -5,10 +5,14 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.6, 3.7, 3.8]
 
     steps:
       - uses: actions/checkout@v2
-      - uses: psf/black@v19.10b0
+
+      - name: Python Black Check
+        uses: RojerGS/python-black-check@1.0.1
+        with:
+          # File or directory to run black on.
+          path: # optional, default is .
+          # The number of characters allowed per line.
+          line-length: # optional, default is 81
