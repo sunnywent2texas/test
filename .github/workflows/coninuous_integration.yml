@@ -16,7 +16,6 @@ jobs:
       
       - name: Run Checks (Black)
         run: |
-          echo '------Black------------'
           pip install black
           black --check .
           
@@ -31,6 +30,7 @@ jobs:
           black .
           git commit -am "FIX: Auto-Format Python code with Black"
           git push
+          
           
       - name: Run Checks (iSort)
         run: |      
