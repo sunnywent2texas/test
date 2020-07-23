@@ -28,6 +28,7 @@ jobs:
           echo 'hallo again'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           echo 'REPO sonja' $GITHUB_REPOSITORY
+          git fetch
           echo 'HEAD REF sonja' $GITHUB_HEAD_REF
           git checkout $GITHUB_HEAD_REF
           echo 'try to commit next'
