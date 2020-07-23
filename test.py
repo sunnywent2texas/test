@@ -1,15 +1,10 @@
-from my_lib import Object
+from __future__ import absolute_import
 
 import os
-
-from my_lib import Object3
-
-from my_lib import Object2
-
 import sys
 
+from my_lib import Object, Object2, Object3
 from third_party import (
-    lib15,
     lib1,
     lib2,
     lib3,
@@ -24,13 +19,8 @@ from third_party import (
     lib12,
     lib13,
     lib14,
+    lib15,
 )
-
-import sys
-
-from __future__ import absolute_import
-
-from third_party import lib3
 
 test = 3534
 
