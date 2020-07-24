@@ -14,10 +14,10 @@ jobs:
         with:
           python-version: 3.7
                     
-      - name: Run Test and Commit Changes to the pull request, if needed
+      - name: Commit Changes to the pull request, if needed
         run: |
-          git config --global user.name 'autoblack'
-          git config --global user.email 'autoblack@users.noreply.github.com'
+          git config --global user.name 'autoformat'
+          git config --global user.email 'autoformat@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git fetch
           git checkout $GITHUB_HEAD_REF
@@ -28,5 +28,4 @@ jobs:
           pip install black
           black .
           git commit -am "FIX: Auto-Format Python code"
-          git push
-               
+          git push               
