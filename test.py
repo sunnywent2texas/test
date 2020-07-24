@@ -4,8 +4,6 @@ import os
 import sys
 
 from my_lib import Object, Object2, Object3
-from my_lib import Object, Object2, Object3
-from my_lib import Object, Object2, Object3
 from third_party import (
     lib1,
     lib2,
@@ -27,5 +25,5 @@ from third_party import (
 test = 3534
 
 
-def test(   ):
+def test():
     print("hello")
