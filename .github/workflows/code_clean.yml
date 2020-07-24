@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Black and iSort
+      - name: Black & iSort
         run: |
           echo '----Black----'
           pip install black
