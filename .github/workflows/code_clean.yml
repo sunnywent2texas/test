@@ -15,11 +15,12 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Black & iSort
+      - name: Black
         run: |
-          echo '----Black----'
           pip install black
           black --check --line-length 88 --target-version py38 .
-          echo '----iSort-----'
+          
+      - name: iSort
+        run: |
           pip install isort
           isort --check --profile black .
