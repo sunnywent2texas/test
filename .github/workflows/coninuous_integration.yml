@@ -3,7 +3,7 @@ name: Code Check (Black, iSort)
 on: [pull_request]
 
 jobs:
-  build:
+  code_clean_up:
     runs-on: ubuntu-latest
     
     steps:
@@ -28,4 +28,4 @@ jobs:
           pip install black
           black .
           git commit -am "FIX: Auto-Format Python code" || echo '----NO CHANGES TO COMMIT----'
-          git push               
+          git push  
