@@ -28,6 +28,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git fetch
           git checkout $GITHUB_HEAD_REF
+          echo 'actually----try commit----'
           git commit -am "FIX: Auto-Format Python code" || echo 'NO CHANGES'
           echo 'error?'
           git push               
