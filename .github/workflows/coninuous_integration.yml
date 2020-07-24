@@ -7,12 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
-                    
-      - name: Commit Changes to the pull request, if needed
+          python-version: 3.7                    
+      
+      - name: Commit Code Changes to the pull request, if needed
         run: |
           git config --global user.name 'autoformat'
           git config --global user.email 'autoformat@users.noreply.github.com'
