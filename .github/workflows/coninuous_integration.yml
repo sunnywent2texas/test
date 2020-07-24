@@ -16,16 +16,17 @@ jobs:
                     
       - name: Commit Changes to the pull request, if needed
         run: |
+          echo '----isort---------'
+          pip install isort
+          isort .
+          echo '----black---------'
+          pip install black
+          black .
+          echo '----try commit----'
           git config --global user.name 'autoformat'
           git config --global user.email 'autoformat@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git fetch
           git checkout $GITHUB_HEAD_REF
-          echo '----isort----'
-          pip install isort
-          isort .
-          echo '----black----'
-          pip install black
-          black .
           git commit -am "FIX: Auto-Format Python code"
           git push               
