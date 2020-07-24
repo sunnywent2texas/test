@@ -23,4 +23,4 @@ jobs:
       - name: iSort
         run: |
           pip install isort
-          isort --check --profile 'black' .
+          isort --check --profile black .
