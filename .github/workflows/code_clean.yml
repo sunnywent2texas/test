@@ -1,0 +1,30 @@
+name: Code CleanUp (Black, iSort)
+
+on: [pull_request]
+
+jobs:
+  code_clean_up:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Black
+        run: |
+          pip install black
+          black --check --line-length $line_length --target-version $target_version .
+          env:
+                line_length: 88
+                target_version: py38
+
+      - name: iSort
+        run: |
+          pip install isort
+          isort --check --profile 'black' .
+          
